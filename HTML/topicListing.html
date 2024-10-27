@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Topic listing</title>
+    <!-- cdn link for remix icon -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.4.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: "Gilroy", sans-serif;
+        box-sizing: border-box;
+      }
+
+      #main-container {
+        background-color: #80d0c7;
+      }
+      h3 a {
+        color: rgb(165, 16, 16);
+        text-decoration: none;
+      }
+      /* #topic{
+        color:black;
+      } */
+
+      nav{
+        display: flex;
+        /* justify-content: center; */
+        /* justify-content: end; */
+        /* justify-content: start; */
+        /* justify-content: space-between; */
+        /* justify-content: space-around; */
+        justify-content: space-evenly;
+        align-items: center;
+        color:white;
+        gap:5px;
+        padding:0px 120px;
+      }
+
+      nav ul{
+        display: flex;
+        gap:80px;
+      }
+      nav ul li{
+        list-style: none;
+      }
+
+      nav ul li a{
+        text-decoration: none;
+        color: white;
+
+      }
+    </style>
+  </head>
+  <body>
+    <div id="main-container">
+      <!-- start navbar -->
+      <nav>
+        <div>
+          <h3>
+            <a id="topic" href="#">Topic</a>
+          </h3>
+        </div>
+        <div>
+          <ul>
+            <li><a href="">Home</a></li>
+            <li><a href="">Browse Topic</a></li>
+            <li><a href="">How it works</a></li>
+            <li><a href="">FAQ's </a></li>
+            <li><a href="">Contact</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <i class="ri-user-line"></i>
+        </div>
+      </nav>
+      <!-- end navbar -->
+    </div>
+  </body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Responsive Navbar</title>
+    <!-- cdn link for remix icon -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.4.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: "Gilroy", sans-serif;
+      }
+      nav {
+        background-color: rgb(171, 171, 248);
+        padding: 0px 20px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        /* flex-wrap: wrap; */
+        /* flex-direction: column; */
+      }
+
+      nav ul {
+        display: flex;
+        /* flex-wrap: wrap; */
+        list-style-type: none;
+      }
+
+      nav h3 a,
+      nav ul li a {
+        text-decoration: none;
+        color: black;
+        padding: 10px 20px;
+      }
+
+      nav h3:hover,
+      nav ul li a:hover {
+        color: rgb(115, 115, 248);
+        background-color: white;
+        border-radius: 5px;
+      }
+      /* using media query to make design responsiveness */
+      @media screen and (min-width: 769px) {
+        #menu-icon {
+          display: none;
+        }
+      }
+
+      @media screen and (max-width: 768px) {
+        nav ul {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <h3><a href="">Logo</a></h3>
+      <ul>
+        <li><a href="">Home</a></li>
+        <li><a href="">About</a></li>
+        <li><a href="">Contact</a></li>
+        <li><a href="">Services</a></li>
+      </ul>
+      <ul>
+        <li><a href="">Sign In</a></li>
+        <li><a href="">Sign Up</a></li>
+      </ul>
+      <div id="menu-icon">
+        <i class="ri-menu-3-line"></i>
+      </div>
+    </nav>
+  </body>
+</html>

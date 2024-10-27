@@ -1,0 +1,166 @@
+#facebook {
+  background-color: #3b5998;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 10px;
+}
+
+#twitter:link {
+  text-decoration: none;
+  color: blue;
+}
+
+#twitter:visited {
+  text-decoration: none;
+  color: rgb(255, 38, 0);
+}
+
+#instagram {
+  color: #3b5998;
+}
+#instagram:link {
+  text-decoration: none;
+  color: #3b5998;
+}
+#instagram:visited {
+  text-decoration: none;
+  color: #7f983b;
+}
+#instagram:hover {
+  color: #3b5998;
+}
+#instagram:active {
+  color: #983b46;
+}
+
+#un-list li:nth-child(odd) {
+  color: red;
+  background: yellow;
+}
+
+#name:focus {
+  background-color: yellow;
+  color: red;
+}
+#home {
+  color: blue !important;
+  background-color: cornflowerblue !important;
+}
+
+#hero-section {
+  background-color: #f4f4f4;
+  color: #333;
+  display: flex;
+  width: 100%;
+  height: 60vh;
+  justify-content: center;
+  /* justify-content: start; */
+  /* justify-content: end; */
+  /* justify-content: space-between; */
+  /* justify-content: space-around; */
+  /* justify-content: space-evenly; */
+  /* align-items: center; */
+  /* align-items: start; */
+  /* align-items: end; */
+/* flex-direction: row; */
+  /* flex-direction: column; */
+  flex-wrap: wrap;
+  
+}
+ 
+
+#hero-img {
+  height: 20rem;
+  width: 20rem;
+}
+
+#hero-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  transition: width 2s, height 3s, border-radius 3s;
+}
+
+#hero-img img:hover{
+  width:110%;
+  height: 105%;
+  border-radius: 25px;
+}
+ 
+
+
+#services{
+  margin-bottom: 50px;
+}
+
+#serve-container {
+  position: relative;
+  height: 50vh;
+  width: 400px;
+  color: black;
+  font-size: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  overflow: hidden; /* Ensure content stays inside the container */
+}
+
+#serve-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('https://themewagon.github.io/meyawo/assets/imgs/folio-1.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 1;
+  transition: opacity 0.3s;
+  z-index: 0; /* Keep the background behind the content */
+}
+
+#serve-container:hover::before {
+  opacity: 0.7;
+}
+
+.serve-content {
+  position: relative;
+  z-index: 1; /* Bring the content in front of the background */
+  display: none;
+}
+
+#serve-container:hover .serve-content {
+  cursor: pointer;
+  display: flex;
+}
+
+.para{
+  transition:background-color 2s,color 2s 2s
+}
+.para:hover{
+  background-color: blue;
+  color:white
+}
+
+.loader {
+  width: 50px;
+  height: 50px;
+  border: 5px solid rgba(255, 255, 255,0.5);
+  border-top: 5px solid #3498db;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+

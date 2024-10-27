@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload or Capture Image</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        #controls {
+            margin-bottom: 20px;
+        }
+
+        button, input[type="file"] {
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        #camera, #preview {
+            display: none;
+            margin-top: 20px;
+        }
+
+        #canvas {
+            display: none;
+            margin-top: 20px;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            margin-top: 20px;
+        }
+
+        .preview-container {
+            border: 2px dashed #ddd;
+            padding: 20px;
+            margin-top: 20px;
+            text-align: center;
+            background-color: white;
+            min-height: 300px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Upload or Capture Image</h1>
+
+    <div id="controls">
+        <!-- Browse image button -->
+        <input type="file" id="browse" accept="image/*">
+
+        <!-- Capture image button -->
+        <button id="startCapture">Capture Image</button>
+    </div>
+
+    <!-- Video element to show camera feed -->
+    <video id="camera" autoplay></video>
+
+    <!-- Capture button -->
+    <button id="capture" style="display:none;">Capture Photo</button>
+
+    <!-- Preview Section -->
+    <div class="preview-container" id="preview-container">
+        <p>No image selected or captured</p>
+    </div>
+    
+    <!-- Canvas to capture image from video -->
+    <canvas id="canvas"></canvas>
+
+    <script>
+        const video = document.getElementById('camera');
+        const canvas = document.getElementById('canvas');
+        const context = canvas.getContext('2d');
+        const startCaptureButton = document.getElementById('startCapture');
+        const captureButton = document.getElementById('capture');
+        const browseButton = document.getElementById('browse');
+        const previewContainer = document.getElementById('preview-container');
+
+        let currentImage = null;
+
+        // Event listener for the Capture Image button
+        startCaptureButton.addEventListener('click', function() {
+            // Request access to the camera only when the user clicks "Capture Image"
+            navigator.mediaDevices.getUserMedia({ video: true })
+            .then(function(stream) {
+                video.srcObject = stream;
+                video.style.display = 'block'; // Show video feed
+                captureButton.style.display = 'inline'; // Show capture button
+            });
+        });
+
+        // Capture image from the camera
+        captureButton.addEventListener('click', function() {
+            // Set canvas size to match the video dimensions
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+            context.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+            // Convert the canvas to an image
+            const capturedImage = canvas.toDataURL('image/png');
+            displayImage(capturedImage);
+
+            // Stop the camera stream after capturing the photo
+            const stream = video.srcObject;
+            const tracks = stream.getTracks();
+            tracks.forEach(track => track.stop());
+            video.style.display = 'none'; // Hide the video feed after capturing
+            captureButton.style.display = 'none'; // Hide the capture button
+        });
+
+        // Event listener for the Browse Image button
+        browseButton.addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const selectedImage = e.target.result;
+                    displayImage(selectedImage);
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Function to display an image in the preview container
+        function displayImage(imageSrc) {
+            previewContainer.innerHTML = ''; // Clear existing content
+
+            const imgElement = document.createElement('img');
+            imgElement.src = imageSrc;
+
+            previewContainer.appendChild(imgElement); // Add the image to the preview container
+            currentImage = imageSrc; // Update the current image
+        }
+    </script>
+</body>
+</html>
